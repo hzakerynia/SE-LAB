@@ -460,6 +460,7 @@ public class CodeGenerator {
         switch (t) {
             case Bool:
                 temp = VarType.Bool;
+                break;
             default:
                 break;
         }
