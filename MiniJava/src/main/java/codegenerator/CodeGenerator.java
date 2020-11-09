@@ -153,9 +153,7 @@ public class CodeGenerator {
 //    }
     public void checkID() {
         symbolStack.pop();
-        if (ss.peek().varType == VarType.Non) {
-            //TODO : error
-        }
+        //TODO: error
     }
 
     public void pid(Token next) {
@@ -304,27 +302,29 @@ public class CodeGenerator {
 
     }
 
-    public void add() {
+    private void duplication(String type) {
         Address temp = new Address(memory.getTemp(), VarType.Int);
         Address s2 = ss.pop();
         Address s1 = ss.pop();
 
         if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
-            ErrorHandlerUtils.printError("In add two operands must be integer");
+            ErrorHandlerUtils.printError("In " + type + " two operands must be integer");
         }
-        memory.add3AddressCode(Operation.ADD, s1, s2, temp);
+        if (type.equals("add")) {
+            memory.add3AddressCode(Operation.ADD, s1, s2, temp);
+        }
+        else {
+            memory.add3AddressCode(Operation.SUB, s1, s2, temp);
+        }
+
         ss.push(temp);
+    }
+    public void add() {
+        duplication("sub");
     }
 
     public void sub() {
-        Address temp = new Address(memory.getTemp(), VarType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-        if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
-            ErrorHandlerUtils.printError("In sub two operands must be integer");
-        }
-        memory.add3AddressCode(Operation.SUB, s1, s2, temp);
-        ss.push(temp);
+        duplication("sub");
     }
 
     public void mult() {
