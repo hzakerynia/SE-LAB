@@ -198,7 +198,7 @@ public class CodeGenerator {
             case Bool:
                 t = varType.Bool;
                 break;
-            case Int:
+            default:
                 t = varType.Int;
                 break;
         }
@@ -269,7 +269,7 @@ public class CodeGenerator {
                 case Bool:
                     t = varType.Bool;
                     break;
-                case Int:
+                default:
                     t = varType.Int;
                     break;
             }
@@ -464,10 +464,10 @@ public class CodeGenerator {
         SymbolType t = symbolTable.getMethodReturnType(symbolStack.peek(), methodName);
         varType temp = varType.Int;
         switch (t) {
-            case Int:
-                break;
             case Bool:
                 temp = varType.Bool;
+            default:
+                break;
         }
         if (s.varType != temp) {
             ErrorHandler.printError("The type of method and return address was not match");
