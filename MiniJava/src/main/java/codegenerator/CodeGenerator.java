@@ -131,6 +131,8 @@ public class CodeGenerator {
             case 33:
                 defMain();
                 break;
+            default:
+                return;
         }
     }
 
@@ -168,7 +170,7 @@ public class CodeGenerator {
                     case Bool:
                         t = varType.Bool;
                         break;
-                    case Int:
+                    default:
                         t = varType.Int;
                         break;
                 }
@@ -236,11 +238,12 @@ public class CodeGenerator {
             varType t = varType.Int;
             switch (symbolTable.getMethodReturnType(className, methodName))
             {
-                case Int:
-                    t = varType.Int;
-                    break;
                 case Bool:
                     t = varType.Bool;
+                    break;
+
+                default:
+                    t = varType.Int;
                     break;
             }
             Address temp = new Address(memory.getTemp(),t);
