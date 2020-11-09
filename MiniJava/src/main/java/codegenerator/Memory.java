@@ -76,7 +76,7 @@ class ThreeAddressCode {
     {
         if(operation == null) {
             return "";
-        };
+        }
         StringBuffer res = new StringBuffer("(");
         res.append(operation.toString()).append(",");
         if(Operand1 != null) {
