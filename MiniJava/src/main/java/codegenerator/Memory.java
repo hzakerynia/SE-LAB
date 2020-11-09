@@ -62,7 +62,7 @@ class ThreeAddressCode {
     public Address Operand3;
 
     public ThreeAddressCode() {
-
+        // just documenting
     }
 
     public ThreeAddressCode(Operation op, Address opr1, Address opr2, Address opr3) {
