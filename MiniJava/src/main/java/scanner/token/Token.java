@@ -35,8 +35,9 @@ public class Token {
     public int hashCode() {
         final int prime = 31;
         int result = type.hashCode();
-        if(type == Type.KEYWORDS)
+        if(type == Type.KEYWORDS) {
             result = prime * result + (value == null ? 0 : value.hashCode());
+        }
         return result;
     }
 
