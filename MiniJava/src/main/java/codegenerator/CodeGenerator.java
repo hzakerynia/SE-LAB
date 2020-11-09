@@ -313,10 +313,12 @@ public class CodeGenerator {
         if ("add".equals(type)) {
             memory.add3AddressCode(Operation.ADD, s1, s2, temp);
         }
-        else {
+        else if ("sub".equals(type)) {
             memory.add3AddressCode(Operation.SUB, s1, s2, temp);
         }
-
+        else if ("mult".equals(type)){
+            memory.add3AddressCode(Operation.MULT, s1, s2, temp);
+        }
         ss.push(temp);
     }
     public void add() {
@@ -328,15 +330,7 @@ public class CodeGenerator {
     }
 
     public void mult() {
-        Address temp = new Address(memory.getTemp(), VarType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-        if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
-            ErrorHandlerUtils.printError("In mult two operands must be integer");
-        }
-        memory.add3AddressCode(Operation.MULT, s1, s2, temp);
-//        memory.saveMemory();
-        ss.push(temp);
+        duplication("mult");
     }
 
     public void label() {
