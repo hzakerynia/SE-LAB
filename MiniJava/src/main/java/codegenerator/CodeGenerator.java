@@ -310,7 +310,7 @@ public class CodeGenerator {
         if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
             ErrorHandlerUtils.printError("In " + type + " two operands must be integer");
         }
-        if (type.equals("add")) {
+        if ("add".equals(type)) {
             memory.add3AddressCode(Operation.ADD, s1, s2, temp);
         }
         else {
